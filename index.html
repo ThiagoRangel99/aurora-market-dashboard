@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard executivo de vendas da Aurora Market, com dados sintéticos.">
+  <title>Aurora Market | Sales Intelligence</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/metrics.js" defer></script>
+  <script src="js/filters.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div><strong>Aurora</strong><span>Market / BI</span></div>
+      </div>
+      <div class="sidebar-rule"></div>
+      <p class="nav-label">Workspace</p>
+      <nav class="side-nav" aria-label="Seções do dashboard">
+        <a class="nav-item active" href="#conteudo" aria-current="page"><span class="nav-glyph" aria-hidden="true">⌁</span>Visão geral</a>
+        <a class="nav-item" href="#analises-titulo"><span class="nav-glyph" aria-hidden="true">◫</span>Análises</a>
+        <a class="nav-item" href="#tabela-titulo"><span class="nav-glyph" aria-hidden="true">≡</span>Vendas recentes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="live-line"><span class="status-dot" aria-hidden="true"></span><span>Ambiente demonstrativo</span></div>
+        <p>Dados sintéticos<br>última carga: 22 out 2026</p>
+      </div>
+    </aside>
+
+    <main id="conteudo" class="main-content">
+      <header class="topbar">
+        <div class="title-block">
+          <div class="title-kicker"><span class="kicker-line"></span><span>Sales intelligence / 01</span></div>
+          <h1>Visão geral de vendas</h1>
+          <p class="subtitle">Leitura executiva do desempenho da Aurora Market.</p>
+        </div>
+        <div class="header-meta">
+          <div class="data-badge" role="note"><span>BASE SINTÉTICA</span><strong>60 registros</strong></div>
+          <div class="header-clock" aria-label="Contexto do painel"><span class="clock-dot" aria-hidden="true"></span><span>Modo demonstração</span></div>
+        </div>
+      </header>
+
+      <section class="filters-panel" aria-labelledby="filtros-titulo">
+        <div class="filter-intro"><p class="eyebrow">Query controls</p><h2 id="filtros-titulo">Recorte analítico</h2></div>
+        <div class="filters-grid">
+          <label class="field"><span>Período</span><select id="period-filter" aria-label="Filtrar por mês"><option value="all">Todos os meses</option></select></label>
+          <label class="field"><span>Categoria</span><select id="category-filter" aria-label="Filtrar por categoria"><option value="all">Todas as categorias</option></select></label>
+          <label class="field"><span>Visão dos gráficos</span><select id="view-filter" aria-label="Escolher métrica dos gráficos"><option value="revenue">Faturamento</option><option value="volume">Quantidade de vendas</option></select></label>
+          <button id="clear-filters" class="button button-ghost" type="button"><span aria-hidden="true">↺</span> Limpar filtros</button>
+        </div>
+      </section>
+
+      <section class="dashboard-grid" aria-labelledby="indicadores-titulo">
+        <article class="panel hero-panel">
+          <div class="panel-heading hero-heading"><div><p class="eyebrow cyan-text">Primary metric / 01</p><h2>Faturamento</h2></div><span class="panel-code">AM.REV</span></div>
+          <div class="hero-value-row"><strong id="kpi-revenue">R$ 0,00</strong><span id="result-count" class="result-count" aria-live="polite"></span></div>
+          <p class="hero-caption">Soma das vendas no recorte selecionado</p>
+          <div class="hero-chart-wrap"><canvas id="monthly-chart" aria-label="Gráfico de evolução mensal"></canvas><p id="monthly-empty" class="empty-state" hidden>Não há dados para o recorte selecionado.</p></div>
+          <div class="hero-footer"><span>EVOLUÇÃO MENSAL</span><span id="trend-caption">Faturamento</span></div>
+        </article>
+
+        <div class="metric-stack" aria-labelledby="indicadores-titulo">
+          <div class="stack-heading"><p class="eyebrow">Snapshot / 02—04</p><h2 id="indicadores-titulo">Indicadores</h2></div>
+          <article class="mini-kpi"><div class="mini-kpi-label"><span class="metric-index">02</span><span>Volume de vendas</span></div><strong id="kpi-volume">0</strong><small>Transações no recorte</small></article>
+          <article class="mini-kpi"><div class="mini-kpi-label"><span class="metric-index">03</span><span>Ticket médio</span></div><strong id="kpi-average">R$ 0,00</strong><small>Faturamento por venda</small></article>
+          <article class="mini-kpi"><div class="mini-kpi-label"><span class="metric-index">04</span><span>Categorias distintas</span></div><strong id="kpi-categories">0</strong><small>Presentes no recorte</small></article>
+        </div>
+
+        <article class="panel category-panel">
+          <div class="panel-heading"><div><p class="eyebrow cyan-text">Mix / 02</p><h2>Por categoria</h2></div><span id="category-caption" class="chart-caption">Faturamento</span></div>
+          <div class="category-chart-wrap"><canvas id="category-chart" aria-label="Gráfico de comparação por categoria"></canvas><p id="category-empty" class="empty-state" hidden>Não há dados para o recorte selecionado.</p></div>
+          <div class="panel-footnote"><span class="legend-dot cyan-dot" aria-hidden="true"></span><span>Distribuição do recorte atual</span></div>
+        </article>
+
+        <section class="panel table-panel" aria-labelledby="tabela-titulo">
+          <div class="panel-heading"><div><p class="eyebrow cyan-text">Activity stream / 03</p><h2 id="tabela-titulo">Vendas recentes</h2></div><span class="table-note">Valores em reais</span></div>
+          <div class="table-container">
+            <table><caption class="sr-only">Lista de vendas sintéticas filtradas</caption><thead><tr><th scope="col">Data</th><th scope="col">Produto</th><th scope="col">Categoria</th><th scope="col" class="numeric">Valor da venda</th></tr></thead><tbody id="sales-table-body"></tbody></table>
+            <p id="table-empty" class="empty-state" hidden>Nenhuma venda encontrada para os filtros selecionados.</p>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer-note"><span class="footer-bar" aria-hidden="true"></span>Demonstração independente · dados totalmente fictícios · Aurora Market</footer>
+    </main>
+  </div>
+</body>
+</html>
