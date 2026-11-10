@@ -35,7 +35,6 @@ A nova composição usa navegação lateral compacta, tema dark, painel principa
 - Únicas URLs externas identificadas: CDN público do Chart.js e a documentação pública do Chart.js; os demais endereços são locais.
 - Chart.js confirmado no navegador com `typeof Chart = function` e versão `4.4.7`; os canvases mensal e por categoria foram encontrados.
 - Arquivos temporários `.tmp`, `.log`, `.swp` e `.bak` não foram encontrados.
-- Manifesto `manus-routes.json` validado.
 
 ## Não automatizados
 

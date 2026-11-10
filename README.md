@@ -4,6 +4,8 @@ Demonstração independente de Business Intelligence para uma empresa fictícia 
 
 > **Aviso:** todos os nomes, produtos, datas e valores deste projeto são sintéticos.
 
+**Demo:** [thiagorangel99.github.io/aurora-market-dashboard](https://thiagorangel99.github.io/aurora-market-dashboard/) · **Portfólio:** [thiagorangel99.github.io](https://thiagorangel99.github.io/)
+
 ## Experiência
 
 O visitante pode filtrar uma base de 60 vendas por mês e categoria. Os quatro indicadores, os dois gráficos e a tabela usam a mesma base e são atualizados pelo mesmo recorte. O controle **Visão dos gráficos** alterna entre faturamento e quantidade de vendas sem mudar o significado dos cartões ou da tabela.
@@ -50,7 +52,7 @@ Quando não há registros, os cartões mostram zero, os gráficos exibem uma men
 A forma recomendada é abrir um servidor HTTP local na pasta do projeto:
 
 ```bash
-cd dashboard-vendas
+cd aurora-market-dashboard
 python3 -m http.server 8000
 ```
 
